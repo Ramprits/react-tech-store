@@ -1,22 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
-import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.min.css";
-const Button = styled.button`
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
+import { Router, Switch } from "react-router-dom";
+import Home from "./pages/HomePage";
+import About from "./pages/AboutPage";
+import Contact from "./pages/ContactPage";
+import Product from "./pages/ProductPage";
+import ProductDetail from "./pages/SiggleProductPage";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h3>Welcome to React tech store application</h3>
-        <Button >Click me!</Button>
-      </div>
+      <Fragment>
+        <Switch>
+          <Router path="/" exact component={Home} />
+          <Router path="/about" component={About} />
+          <Router path="/contact" component={Contact} />
+          <Router path="/products" component={Product} />
+          <Router path="/product/:id" component={ProductDetail} />
+        </Switch>
+      </Fragment>
     );
   }
 }
